@@ -1,13 +1,13 @@
 
 <template>
   <n-config-provider :theme-overrides="themeOverrides" :theme="darkTheme">
-    <!-- <n-theme-editor> -->
-    <n-message-provider>
-      <n-dialog-provider>
-        <router-view />
-      </n-dialog-provider>
-    </n-message-provider>
-    <!-- </n-theme-editor> -->
+    <n-theme-editor style="display: none;">
+      <n-message-provider>
+        <n-dialog-provider>
+          <router-view />
+        </n-dialog-provider>
+      </n-message-provider>
+    </n-theme-editor>
   </n-config-provider>
 </template>
 
