@@ -5,6 +5,7 @@
       <n-message-provider>
         <n-dialog-provider>
           <router-view />
+          <n-back-top :right="100" />
         </n-dialog-provider>
       </n-message-provider>
     </n-theme-editor>
