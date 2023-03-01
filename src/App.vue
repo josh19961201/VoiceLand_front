@@ -1,18 +1,18 @@
 
 <template>
   <n-config-provider :theme-overrides="themeOverrides" :theme="darkTheme">
-    <n-theme-editor>
-      <n-message-provider>
-        <n-dialog-provider>
-          <router-view />
-        </n-dialog-provider>
-      </n-message-provider>
-    </n-theme-editor>
+    <!-- <n-theme-editor> -->
+    <n-message-provider>
+      <n-dialog-provider>
+        <router-view />
+      </n-dialog-provider>
+    </n-message-provider>
+    <!-- </n-theme-editor> -->
   </n-config-provider>
 </template>
 
 <script setup>
-import { NConfigProvider, darkTheme } from 'naive-ui'
+import { NConfigProvider, darkTheme, NThemeEditor } from 'naive-ui'
 
 const themeOverrides = {
   common: {
