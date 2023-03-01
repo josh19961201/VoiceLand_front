@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="carouselOut">
-      <n-carousel autoplay>
+      <n-carousel effect="fade" dot-type="line" autoplay>
         <div v-for="(item) in pageData.banners" :key="item" class="imgContainer">
           <img class="carousel-img" :src="item">
         </div>
@@ -9,19 +9,21 @@
     </div>
     <!-- about -->
     <div class="about">
-      <div class="title">
-        <n-h3>
-          <n-text type="warning">
-            土地音造
-          </n-text>
-        </n-h3>
-        <n-h3>VOICE LAND INC.</n-h3>
-      </div>
+      <div class="aboutInside">
+        <div class="title">
+          <n-h3>
+            <n-text type="warning">
+              土地音造
+            </n-text>
+          </n-h3>
+          <n-h3>VOICE LAND INC.</n-h3>
+        </div>
 
-      <n-divider />
-      <n-p style="white-space: pre-line">
-        {{ pageData.intro }}
-      </n-p>
+        <n-divider />
+        <n-p style="white-space: pre-line">
+          {{ pageData.intro }}
+        </n-p>
+      </div>
     </div>
     <!-- show -->
     <div class="show">
@@ -61,7 +63,7 @@
       <n-divider />
       <n-grid cols="3" :x-gap="64">
         <n-gi v-for="product in products" :key="product._id">
-          <ProductCard v-bind="product" />
+          <ProductCard v-bind="product" style="height: 100%;" />
         </n-gi>
       </n-grid>
       <n-divider />
@@ -143,7 +145,6 @@ const pageData = reactive({
     }
     const randomItems = shuffle(productsData.data.result).slice(0, 3)
     products.push(...randomItems)
-    console.log(products)
   } catch (error) {
     console.log(error)
     dialog.error({
@@ -200,6 +201,9 @@ const pageData = reactive({
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
   }
+  .aboutInside{
+    max-width: 960px;
+  }
   .n-h3{
     font-size: 5rem;
     margin: 0;
@@ -209,7 +213,7 @@ const pageData = reactive({
   }
   .n-p{
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 2.2;
   }
 }
 .show{
@@ -244,8 +248,8 @@ const pageData = reactive({
       text-align: center;
     }
     img{
-        width: 80%;
-        max-width: 600px;
+        width: 70%;
+        // max-width: 800px;
     }
     .n-p{
       font-size: 1.8rem;

@@ -1,35 +1,49 @@
 
 <template>
-  <n-grid cols="12" item-responsive responsive="screen">
-    <n-grid-item span="12 s:6 m:5" class="content">
-      <div class="carouselOut">
-        <n-carousel show-arrow :space-between="20" draggable>
-          <!-- <div v-for="image in product.images" :key="image" class="carousel-img">
-            <n-image :src="image" object-fit="contain" />
-          </div> -->
-          <n-image v-for="image in product.images" :key="image" :src="image" class="carousel-img" object-fit="contain" />
-        </n-carousel>
-      </div>
-    </n-grid-item>
-    <n-grid-item span="12 s:6 m:7" class="content info">
-      <n-h1>{{ product.name }}</n-h1>
-      <n-h3>NT${{ product.price }}</n-h3>
-      <n-form ref="addRef" :model="addForm" :rules="addRules" :show-require-mark="false">
-        <n-form-item label="數量" path="quantity">
-          <n-input-number v-model:value="addForm.quantity" />
-        </n-form-item>
-      </n-form>
-      <n-button size="medium" type="primary" style="max-width: 250px;" @click="submitCart">
-        加入購物車
-      </n-button>
-    </n-grid-item>
-    <n-grid-item span="12" class="content">
-      <n-h3>商品介紹</n-h3>
-      <n-text style="white-space: pre-line">
-        {{ product.description }}
-      </n-text>
-    </n-grid-item>
-  </n-grid>
+  <div class="pageContent">
+    <n-grid cols="12" item-responsive responsive="screen">
+      <n-grid-item span="12 s:6 m:6" style="display: flex; justify-content: center; ">
+        <div class="carouselOut">
+          <n-carousel show-arrow :space-between="20" draggable>
+            <n-image v-for="image in product.images" :key="image" :src="image" class="carousel-img" object-fit="contain" />
+          </n-carousel>
+        </div>
+      </n-grid-item>
+      <n-grid-item span="12 s:5 m:5" class="info" style="margin-left: 5rem;">
+        <n-h1>{{ product.name }}</n-h1>
+        <n-h3>NT${{ product.price }}</n-h3>
+        <n-form ref="addRef" :model="addForm" :rules="addRules" :show-require-mark="false">
+          <div class="description">
+            <n-h3>商品介紹</n-h3>
+            <n-p style="white-space: pre-line; line-height: 2;">
+              {{ product.description }}
+            </n-p>
+          </div>
+          <div class="foot">
+            <n-form-item label="數量" path="quantity">
+              <n-input-number v-model:value="addForm.quantity" />
+            </n-form-item>
+            <n-form-item>
+              <n-button size="medium" type="primary" @click="submitCart">
+                加入購物車
+              </n-button>
+            </n-form-item>
+          </div>
+        </n-form>
+      </n-grid-item>
+    </n-grid>
+    <n-divider style="margin: 5rem;" />
+    <div class="sell">
+      <n-h3 style="font-size: 2rem; margin-bottom: 3rem;">
+        你可能會喜歡...
+      </n-h3>
+      <n-grid cols="3" :x-gap="64">
+        <n-gi v-for="i in products" :key="i._id">
+          <ProductCard v-bind="i" />
+        </n-gi>
+      </n-grid>
+    </div>
+  </div>
 </template>
 <script setup>
 import { reactive, ref } from 'vue'
@@ -50,6 +64,8 @@ const addRef = ref(null)
 const addForm = ref({
   quantity: 1
 })
+const products = reactive([])
+
 const addRules = {
   quantity: {
     type: 'number',
@@ -122,7 +138,7 @@ const submitCart = () => {
     product.sell = data.result.sell
     product.category = data.result.category
 
-    document.title = 'Shop | ' + product.name
+    document.title = 'Voice Land - 線上商城 | ' + product.name
     if (!product.sell) {
       dialog.error({
         title: '錯誤',
@@ -131,7 +147,17 @@ const submitCart = () => {
       })
       router.go(-1)
     }
-    // document.querySelector('meta[property="og:title"]').setAttribute('content', product.name)
+    const productsData = await api.get('/products')
+    // 隨機洗牌產品
+    const shuffle = (array) => {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]
+      }
+      return array
+    }
+    const randomItems = shuffle(productsData.data.result).slice(0, 3)
+    products.push(...randomItems)
   } catch (error) {
     dialog.error({
       title: '錯誤',
@@ -144,11 +170,9 @@ const submitCart = () => {
 
 </script>
 <style scoped lang="scss">
-.n-grid{
-  padding:6rem;
-  @media(max-width: 1440px) {
-    padding:0rem;
-  }
+.pageContent{
+  padding:5rem;
+
 }
 .carouselOut{
   width: 35vw;
@@ -166,27 +190,28 @@ const submitCart = () => {
   width: 100%;
   height: 100%;
 }
-.content{
-  margin: 3rem;
-  @media(max-width: 600px) {
-    margin: 3rem 0;
-  }
+.description{
+  margin: 3rem 0;
 }
-.content:nth-child(1){
-  @media(max-width: 600px) {
-    display: flex;
-    justify-content: center;
-  }
-}
-.content:nth-child(3){
-  @media(min-width: 1080px) {
-    padding: 0 5rem;
-  }
-}
+
 .info{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
+.foot{
+  display: flex;
+  & *{
+    margin-right: 1rem;
+  }
+}
+.sell{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .n-grid{
+    max-width: 1000px;
+  }
+}
 </style>

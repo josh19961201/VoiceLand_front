@@ -27,7 +27,7 @@
 import { h, ref } from 'vue'
 import { NIcon } from 'naive-ui'
 import { RouterLink } from 'vue-router'
-import { BagOutline, DocumentTextOutline, PersonOutline, HomeOutline, MegaphoneOutline, MusicalNotesOutline } from '@vicons/ionicons5'
+import { BagOutline, DocumentTextOutline, HomeOutline, MegaphoneOutline, MusicalNotesOutline } from '@vicons/ionicons5'
 
 // import { storeToRefs } from 'pinia'
 // import { useUserStore } from '@/stores/user'
@@ -96,18 +96,19 @@ const menuOptions = [
       ),
     key: 'admin-orders',
     icon: renderIcon(DocumentTextOutline)
-  }, {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: '/admin/users'
-        },
-        { default: () => '會員管理' }
-      ),
-    key: 'admin-users',
-    icon: renderIcon(PersonOutline)
   }
+  // , {
+  //   label: () =>
+  //     h(
+  //       RouterLink,
+  //       {
+  //         to: '/admin/users'
+  //       },
+  //       { default: () => '會員管理' }
+  //     ),
+  //   key: 'admin-users',
+  //   icon: renderIcon(PersonOutline)
+  // }
 ]
 </script>
 <style scoped lang="scss">

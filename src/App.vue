@@ -1,37 +1,42 @@
 
 <template>
-  <n-theme-editor>
-    <!-- <n-config-provider :theme-overrides="themeOverrides"> -->
-    <n-config-provider :theme-overrides="themeOverrides" :theme="darkTheme">
+  <n-config-provider :theme-overrides="themeOverrides" :theme="darkTheme">
+    <n-theme-editor>
       <n-message-provider>
         <n-dialog-provider>
           <router-view />
         </n-dialog-provider>
       </n-message-provider>
-    </n-config-provider>
-  </n-theme-editor>
+    </n-theme-editor>
+  </n-config-provider>
 </template>
 
 <script setup>
-import { NConfigProvider, NThemeEditor, darkTheme } from 'naive-ui'
+import { NConfigProvider, darkTheme } from 'naive-ui'
 
-// const themeOverrides = {
-//   common: {
-//     infoColor: '#5171A5FF',
-//     infoColorHover: '#42597EFF',
-//     infoColorPressed: '#224277FF',
-//     infoColorSuppl: '#5A739CFF',
-//     textColorBase: '#21221BFF',
-//     warningColor: '#E18216FF',
-//     warningColorHover: '#BC6C11FF',
-//     warningColorPressed: '#EB7D00FF',
-//     warningColorSuppl: '#C86A00FF',
-//     errorColorSuppl: '#B74D39FF',
-//     errorColorPressed: '#893727FF',
-//     errorColorHover: '#A35D50FF',
-//     errorColor: '#A94F3EFF'
-//   }
-// }
+const themeOverrides = {
+  common: {
+    primaryColor: '#F2C97DFF',
+    primaryColorHover: '#F5D599FF',
+    primaryColorPressed: '#E6C260FF',
+    primaryColorSuppl: '#F08A00FF',
+    bodyColor: '#0D0E0BFF',
+    tagColor: 'rgba(51, 51, 51, 1)',
+    modalColor: '#11120FFF',
+    cardColor: 'rgba(26, 28, 24, 1)',
+    tableColor: 'rgba(26, 28, 24, 1)',
+    successColor: '#70C0E8FF',
+    successColorHover: '#8ACBECFF',
+    successColorPressed: '#66AFD3FF',
+    popoverColor: '#4C4E48FF',
+    successColorSuppl: '#3889C5FF'
+  },
+  Layout: {
+    color: '#0D0E0BFF',
+    colorEmbedded: '#0D0E0BFF'
+  }
+
+}
 
 </script>
 

@@ -11,17 +11,21 @@
     <template #cover>
       <img :src="images[0]">
     </template>
-    <n-p>
-      NT${{ price }}
-    </n-p>
-    <n-button @click="addProduct({_id, quantity: 1})">
-      <template #icon>
-        <n-icon>
-          <CartOutline />
-        </n-icon>
-      </template>
-      加入購物車
-    </n-button>
+    <template #default>
+      <n-p>
+        NT${{ price }}
+      </n-p>
+    </template>
+    <template #footer>
+      <n-button @click="addProduct({_id, quantity: 1})">
+        <template #icon>
+          <n-icon>
+            <CartOutline />
+          </n-icon>
+        </template>
+        加入購物車
+      </n-button>
+    </template>
   </n-card>
 </template>
 <script setup>
@@ -106,5 +110,10 @@ const addProduct = async (object) => {
 .n-a{
   color: #FFF;
   text-decoration: none;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 </style>

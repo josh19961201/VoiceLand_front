@@ -30,7 +30,7 @@ const router = createRouter({
           name: 'home',
           component: FrontHomeView,
           meta: {
-            title: 'Home',
+            title: '首頁',
             login: false,
             admin: false
           }
@@ -40,7 +40,7 @@ const router = createRouter({
           name: 'show',
           component: FrontShowView,
           meta: {
-            title: 'Show',
+            title: '演出資訊',
             login: false,
             admin: false
           }
@@ -50,7 +50,7 @@ const router = createRouter({
           name: 'work',
           component: FrontWorkView,
           meta: {
-            title: 'Work',
+            title: '作品發佈',
             login: false,
             admin: false
           }
@@ -100,7 +100,7 @@ const router = createRouter({
           name: 'shop',
           component: FrontShopView,
           meta: {
-            title: 'Shop',
+            title: '線上商城',
             login: false,
             admin: false
           }
@@ -120,7 +120,7 @@ const router = createRouter({
           name: 'cart',
           component: () => import('@/views/trade/CartView.vue'),
           meta: {
-            title: 'Cart',
+            title: '購買｜購物車',
             login: true,
             admin: false
           }
@@ -130,7 +130,7 @@ const router = createRouter({
           name: 'orderbuild',
           component: () => import('@/views/trade/OrderBuildView.vue'),
           meta: {
-            title: 'Order Complate',
+            title: '購買｜填寫資料',
             login: true,
             admin: false
           }
@@ -140,7 +140,7 @@ const router = createRouter({
           name: 'ordercomplete',
           component: () => import('@/views/trade/OrderCompleteView.vue'),
           meta: {
-            title: 'Order Build',
+            title: '購買｜訂單完成',
             login: true,
             admin: false
           }
@@ -150,7 +150,7 @@ const router = createRouter({
           name: 'login',
           component: FrontLoginView,
           meta: {
-            title: 'Login',
+            title: '登入／註冊',
             login: false,
             admin: false
           }
@@ -160,7 +160,7 @@ const router = createRouter({
           name: 'user',
           component: () => import('@/views/UserView.vue'),
           meta: {
-            title: 'User',
+            title: '會員中心',
             login: true,
             admin: false
           }

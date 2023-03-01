@@ -13,7 +13,7 @@
     <div class="content">
       <n-grid cols="1 512:2 992:3 1280:4" :x-gap="64" :y-gap="64">
         <n-gi v-for="product in pageProducts" :key="product._id">
-          <ProductCard v-bind="product" />
+          <ProductCard v-bind="product" style="height: 100%;" />
         </n-gi>
       </n-grid>
     </div>
@@ -81,15 +81,14 @@ const pageProducts = computed(() => {
       font-weight: bolder;
     }
   }
+}
 .content{
-padding: 1rem;
-@media(min-width:768px){
   padding: 2rem;
+  // @media(min-width:768px){
+  //   padding: 2rem;
+  // }
+  @media(min-width:992px){
+    padding: 3rem;
+  }
 }
-@media(min-width:992px){
-  padding: 3rem;
-}
-}
-}
-
 </style>

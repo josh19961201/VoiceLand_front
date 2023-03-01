@@ -10,7 +10,7 @@
         結帳金額：${{ totalPrice }}
       </n-h3>
       <router-link to="/orderbuild" style="align-self: flex-end;">
-        <n-button :disabled="!canCheckout">
+        <n-button :disabled="!canCheckout" type="primary">
           前往結帳
         </n-button>
       </router-link>

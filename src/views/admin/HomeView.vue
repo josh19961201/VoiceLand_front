@@ -1,31 +1,35 @@
 <template>
-  <n-h1 class="pageTitle">
-    首頁管理
-  </n-h1>
-  <n-divider />
-  <n-form ref="fromRef" :rules="rules" :model="form" :show-require-mark="false">
-    <n-form-item label="About Us" path="intro">
-      <n-input
-        v-model:value="form.intro" type="textarea" :autosize="{ minRows: 3,maxRows: 5 } " placeholder="請輸入介紹文字"
-      />
-    </n-form-item>
-    <n-form-item label="Banner" path="banners">
-      <n-upload
-        v-model:value="form.banners" list-type="image-card" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff,.svg,.webp" :default-file-list="originalBanners"
-        :multiple="true" :max="5" @change="handleChange"
-      >
-        建議大小
-        <br>
-        1920 * 1080
-      </n-upload>
-    </n-form-item>
-  </n-form>
-  <n-button @click="cancel">
-    取消
-  </n-button>
-  <n-button :loading="loading" type="primary" @click="submitForm">
-    修改
-  </n-button>
+  <div class="container">
+    <n-h1 class="pageTitle">
+      首頁管理
+    </n-h1>
+    <n-divider />
+    <n-form ref="fromRef" :rules="rules" :model="form" :show-require-mark="false" class="form">
+      <n-form-item label="About Us" path="intro">
+        <n-input
+          v-model:value="form.intro" type="textarea" :autosize="{ minRows: 10 } " placeholder="請輸入介紹文字"
+        />
+      </n-form-item>
+      <n-form-item label="Banner" path="banners">
+        <n-upload
+          v-model:value="form.banners" list-type="image-card" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff,.svg,.webp" :default-file-list="originalBanners"
+          :multiple="true" :max="5" @change="handleChange"
+        >
+          建議大小
+          <br>
+          1920 * 1080
+        </n-upload>
+      </n-form-item>
+      <div class="btnGroup">
+        <n-button @click="cancel">
+          取消
+        </n-button>
+        <n-button :loading="loading" type="primary" @click="submitForm">
+          修改
+        </n-button>
+      </div>
+    </n-form>
+  </div>
 </template>
 
 <script setup>
@@ -141,5 +145,21 @@ const submitForm = async () => {
 })()
 </script>
 <style scoped lang="scss">
+.container{
+  min-height: calc( 100vh - 161px );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+}
+.btnGroup{
+    & *{
+      margin-right: 1rem;
+    }
+  }
 
 </style>

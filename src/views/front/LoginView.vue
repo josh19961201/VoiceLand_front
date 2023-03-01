@@ -1,40 +1,42 @@
 <template>
-  <n-card title="登入 ／ 註冊">
-    <n-tabs default-value="signin" size="large" justify-content="space-evenly" type="segment" animated>
-      <n-tab-pane name="signin" tab="Sign in">
-        <n-form ref="signinFormRef" :model="signinForm" :rules="signinRules" :show-require-mark="false">
-          <n-form-item-row label="Account" path="account">
-            <n-input v-model:value="signinForm.account" @keydown.enter.prevent />
-          </n-form-item-row>
-          <n-form-item-row label="Password" path="password">
-            <n-input v-model:value="signinForm.password" type="password" @keydown.enter.prevent />
-          </n-form-item-row>
-        </n-form>
-        <n-button type="primary" block secondary strong :loading="signinBtnLoading" @click="signin">
-          Sign in
-        </n-button>
-      </n-tab-pane>
-      <n-tab-pane name="signup" tab="Sign up">
-        <n-form ref="signupFormRef" :model="signupForm" :rules="signupRules">
-          <n-form-item-row label="Account" path="account">
-            <n-input v-model:value="signupForm.account" @keydown.enter.prevent />
-          </n-form-item-row>
-          <n-form-item-row label="Email" path="email">
-            <n-input v-model:value="signupForm.email" @keydown.enter.prevent />
-          </n-form-item-row>
-          <n-form-item-row label="Password" path="password">
-            <n-input v-model:value="signupForm.password" type="password" @keydown.enter.prevent />
-          </n-form-item-row>
-          <n-form-item-row label="Confirm Password" path="passwordConfirm">
-            <n-input v-model:value="signupForm.passwordConfirm" type="password" :disabled="!signupForm.password" @keydown.enter.prevent />
-          </n-form-item-row>
-          <n-button type="primary" block secondary strong :loading="signupBtnLoading" @click="signup">
-            Sign up
+  <div class="pageContent">
+    <n-card title="登入 ／ 註冊">
+      <n-tabs default-value="signin" size="large" justify-content="space-evenly" type="segment" animated>
+        <n-tab-pane name="signin" tab="登入">
+          <n-form ref="signinFormRef" :model="signinForm" :rules="signinRules" :show-require-mark="false">
+            <n-form-item-row label="帳號" path="account">
+              <n-input v-model:value="signinForm.account" placeholder="" @keydown.enter.prevent />
+            </n-form-item-row>
+            <n-form-item-row label="密碼" path="password">
+              <n-input v-model:value="signinForm.password" type="password" placeholder="" @keydown.enter.prevent />
+            </n-form-item-row>
+          </n-form>
+          <n-button type="primary" block secondary strong :loading="signinBtnLoading" @click="signin">
+            登入
           </n-button>
-        </n-form>
-      </n-tab-pane>
-    </n-tabs>
-  </n-card>
+        </n-tab-pane>
+        <n-tab-pane name="signup" tab="註冊">
+          <n-form ref="signupFormRef" :model="signupForm" :rules="signupRules">
+            <n-form-item-row label="帳號" path="account">
+              <n-input v-model:value="signupForm.account" placeholder="" @keydown.enter.prevent />
+            </n-form-item-row>
+            <n-form-item-row label="電子信箱" path="email">
+              <n-input v-model:value="signupForm.email" placeholder="" @keydown.enter.prevent />
+            </n-form-item-row>
+            <n-form-item-row label="密碼" path="password">
+              <n-input v-model:value="signupForm.password" type="password" placeholder="" @keydown.enter.prevent />
+            </n-form-item-row>
+            <n-form-item-row label="確認密碼" path="passwordConfirm">
+              <n-input v-model:value="signupForm.passwordConfirm" type="password" :disabled="!signupForm.password" placeholder="" @keydown.enter.prevent />
+            </n-form-item-row>
+            <n-button type="primary" block secondary strong :loading="signupBtnLoading" @click="signup">
+              註冊
+            </n-button>
+          </n-form>
+        </n-tab-pane>
+      </n-tabs>
+    </n-card>
+  </div>
 </template>
 
 <script setup>
@@ -223,6 +225,15 @@ const signin = (e) => {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.pageContent{
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 5vh;
+  .n-card{
+    max-width: 800px;
+  }
+}
 </style>
