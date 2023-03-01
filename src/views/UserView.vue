@@ -70,10 +70,11 @@
   </div>
 </template>
 <script setup>
-import { reactive, ref, h } from 'vue'
+import { reactive, ref, h, onMounted } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import { useDialog, useMessage, NDataTable } from 'naive-ui'
 import validator from 'validator'
+import { gsap } from 'gsap'
 
 const dialog = useDialog()
 const message = useMessage()
@@ -294,6 +295,12 @@ const ordersColumns = reactive([
     key: 'totalPrice'
   }
 ])
+onMounted(() => {
+  gsap.from('.container', {
+    opacity: 0,
+    duration: 1
+  })
+})
 </script>
 <style scoped lang="scss">
 .container{

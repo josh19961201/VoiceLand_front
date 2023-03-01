@@ -18,11 +18,12 @@
   </div>
 </template>
 <script setup>
-import { reactive, computed, h } from 'vue'
+import { reactive, computed, h, onMounted } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import { useUserStore } from '@/stores/user'
 import { RouterLink } from 'vue-router'
 import { useDialog, NButton } from 'naive-ui'
+import { gsap } from 'gsap'
 
 const dialog = useDialog()
 
@@ -174,7 +175,12 @@ const tableColumns = reactive([
     }
   }
 ])
-
+onMounted(() => {
+  gsap.from('.container', {
+    opacity: 0,
+    duration: 1
+  })
+})
 </script>
 <style scoped lang="scss">
 .container{

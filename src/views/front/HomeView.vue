@@ -10,7 +10,7 @@
     <!-- about -->
     <div class="about">
       <div class="aboutInside">
-        <div class="title">
+        <div class="title ga1">
           <n-h3>
             <n-text type="warning">
               土地音造
@@ -20,14 +20,14 @@
         </div>
 
         <n-divider />
-        <n-p style="white-space: pre-line">
+        <n-p style="white-space: pre-line" class="ga1">
           {{ pageData.intro }}
         </n-p>
       </div>
     </div>
     <!-- show -->
     <div class="show">
-      <n-h3 class="title">
+      <n-h3 class="title ga2">
         <n-text>
           最新演出
         </n-text>
@@ -37,21 +37,21 @@
         </n-text>
       </n-h3>
       <n-divider />
-      <div class="content">
+      <div class="content ga2">
         <n-h4>{{ newShow.title }}</n-h4>
         <img :src="newShow.image">
         <n-p>{{ newShow.date }}｜{{ newShow.artists }}</n-p>
       </div>
       <n-divider />
       <router-link to="/show">
-        <n-button type="warning" dashed size="large">
+        <n-button type="warning" dashed size="large" class="ga2">
           VIEW ALL SHOWS
         </n-button>
       </router-link>
     </div>
     <n-divider />
     <div class="shop">
-      <n-h3 class="title">
+      <n-h3 class="title ga3">
         <n-text>
           線上商城
         </n-text>
@@ -61,13 +61,13 @@
         </n-text>
       </n-h3>
       <n-divider />
-      <n-grid cols="3" :x-gap="64">
+      <n-grid cols="3" :x-gap="64" class="ga3">
         <n-gi v-for="product in products" :key="product._id">
           <ProductCard v-bind="product" style="height: 100%;" />
         </n-gi>
       </n-grid>
       <n-divider />
-      <router-link to="/shop">
+      <router-link to="/shop" class="ga3">
         <n-button type="warning" dashed size="large">
           SHOP NOW！
         </n-button>
@@ -76,9 +76,11 @@
   </div>
 </template>
 <script setup>
-import { reactive } from 'vue'
+import { reactive, onMounted } from 'vue'
 import { apiAuth, api } from '@/plugins/axios'
 import { useDialog } from 'naive-ui'
+import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 // import { LogoFacebook, Ticket, InformationCircle } from '@vicons/ionicons5'
 
 import dayjs from 'dayjs'
@@ -154,6 +156,47 @@ const pageData = reactive({
     })
   }
 })()
+
+gsap.registerPlugin(ScrollTrigger)
+onMounted(() => {
+  gsap.from('.ga1', {
+    opacity: 0,
+    scale: 0.9,
+    duration: 0.5,
+    scrollTrigger: {
+      trigger: '.ga1',
+      start: 'top 80%'
+    }
+  })
+})
+onMounted(() => {
+  gsap.from('.ga2', {
+    opacity: 0,
+    scale: 0.9,
+    duration: 0.5,
+    scrollTrigger: {
+      trigger: '.ga2',
+      start: 'top 80%'
+    }
+  })
+})
+onMounted(() => {
+  gsap.from('.ga3', {
+    opacity: 0,
+    scale: 0.9,
+    duration: 0.5,
+    scrollTrigger: {
+      trigger: '.ga3',
+      start: 'top 80%'
+    }
+  })
+})
+onMounted(() => {
+  gsap.from('.home', {
+    opacity: 0,
+    duration: 1
+  })
+})
 </script>
 <style scoped lang="scss">
 .home{

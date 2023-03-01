@@ -8,7 +8,7 @@
               <n-input v-model:value="signinForm.account" placeholder="" @keydown.enter.prevent />
             </n-form-item-row>
             <n-form-item-row label="密碼" path="password">
-              <n-input v-model:value="signinForm.password" type="password" placeholder="" @keydown.enter.prevent />
+              <n-input v-model:value="signinForm.password" type="password" placeholder="" @keydown.enter="signin" />
             </n-form-item-row>
           </n-form>
           <n-button type="primary" block secondary strong :loading="signinBtnLoading" @click="signin">

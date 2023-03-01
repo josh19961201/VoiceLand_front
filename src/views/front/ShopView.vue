@@ -20,10 +20,11 @@
   </div>
 </template>
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue'
 import { api } from '@/plugins/axios'
 import { useDialog } from 'naive-ui'
 import ProductCard from '@/components/ProductCard.vue'
+import { gsap } from 'gsap'
 
 const dialog = useDialog()
 
@@ -62,6 +63,12 @@ const pageProducts = computed(() => {
       return product.category.includes(productsFilter.value)
     })
   }
+})
+onMounted(() => {
+  gsap.from('.container', {
+    opacity: 0,
+    duration: 1
+  })
 })
 </script>
 <style scoped lang="scss">

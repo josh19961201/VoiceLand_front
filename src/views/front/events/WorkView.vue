@@ -17,10 +17,11 @@
   </div>
 </template>
 <script setup>
-import { reactive, ref, computed } from 'vue'
+import { reactive, ref, computed, onMounted } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import WorkCard from '@/components/WorkCard.vue'
 import dayjs from 'dayjs'
+import { gsap } from 'gsap'
 
 import { useDialog } from 'naive-ui'
 
@@ -80,7 +81,12 @@ const pageShows = computed(() => {
     })
   }
 })
-
+onMounted(() => {
+  gsap.from('.container', {
+    opacity: 0,
+    duration: 1
+  })
+})
 </script>
 <style scoped lang=scss>
 .container {

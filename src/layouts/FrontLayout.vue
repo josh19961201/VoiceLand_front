@@ -2,7 +2,7 @@
   <n-layout>
     <n-layout-header>
       <n-grid cols="12" item-responsive responsive="screen">
-        <n-grid-item id="logo" span="1">
+        <n-grid-item id="logo" span="2">
           <router-link to="/#">
             <!-- <img src="/logo_bw.png"> -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 498 221.59">
@@ -10,9 +10,12 @@
                 <path d="M164.22,290.76l49.07-11.05-.08-1.06-92.47-7.75v-.45l60-8,0-1.06c-28.61-2.2-57.27-3.9-86-6.32l51.28-10.56,0-1.21L43.49,234.85l0-.38c10.48-.6,21-1.14,31.45-1.81,15.84-1,31.66-2.27,47.5-3,9-.44,17.95-.2,26.93-.15,7.8,0,15.61.29,23.41.41,5.68.09,11.86-4.79,13.31-10.29,1.5-5.76,4.16-10.37,10.62-12,2.25-.59,4-2.9,6.12-4.24,1.29-.81,2.91-1.09,4.17-1.91a11.55,11.55,0,0,0,3.43-3.16,4.76,4.76,0,0,1,4.64-2.59,97.52,97.52,0,0,1,13.7.93,8.23,8.23,0,0,0,4.34-1.3,12.31,12.31,0,0,1,8.69-.92c.7.15,1.58.44,2.12.16,2.68-1.37,4.11.55,6.17,1.66,2.76,1.49,6.08,1.94,9.17,2.82,2.75.78,5.48,1.63,8.26,2.29,1.66.4,3.44.31,5.07.77,3.48,1,6.88,2.22,10.35,3.25,2,.59,4,.9,6,1.48,1.38.4,3.17.65,3.94,1.63,3,3.7,7.27,3.67,11.24,4.64,2.88.71,5.82,1.3,8.61,2.29a8.22,8.22,0,0,1,3.61,2.69c2.05,2.72,3.66,5.77,5.75,8.47.73.94,2.31,1.23,3.51,1.8s2.92.79,3.53,1.73a4.63,4.63,0,0,0,4.34,2.17c6.27.1,12.53.27,18.79.35,19.43.27,38.86.57,58.29.73,13.24.11,26.5,0,39.75,0v.77L344.22,244.85l-.06,1.16,59.18,10.74,0,.57-103.7,11.62,0,1.05,58.8,3.8,0,.55-83,11.15-.11,1,14.68,7.18,0,.53-76.39,9.61-.1-.4,31.73-10.84-.08-.84h-81Z" transform="translate(-1 -126.41)" style="fill:#FFF" />
               </g>
             </svg>
+            <n-h1 style="font-weight: bolder;">
+              Voice Land
+            </n-h1>
           </router-link>
         </n-grid-item>
-        <n-grid-item id="menu" span="10">
+        <n-grid-item id="menu" span="9">
           <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" />
         </n-grid-item>
         <n-grid-item span="1" class="rightBtn">
@@ -77,7 +80,7 @@
         </n-grid-item>
       </n-grid>
     </n-layout-header>
-    <n-layout-content style="min-height:calc(100vh - 92px)">
+    <n-layout-content style="min-height:calc(100vh - 92px)" class="content">
       <div class="spaceTop" />
       <router-view />
     </n-layout-content>
@@ -243,10 +246,20 @@ const userLogout = async () => {
       z-index: 1000;
     }
     #logo{
-      min-width: 100px;
-      padding-left: 5rem;
+      // min-width: 100px;
+      // padding-left: 5rem;
+      a{
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        text-decoration: none;
+      }
       svg{
-        width: 100px;
+        width: 60px;
+      }
+      .n-h1{
+        font-size: 1.2rem;
+        margin: 0;
       }
     }
     #menu{
