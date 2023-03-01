@@ -1,0 +1,1 @@
+import{C as e,x as n}from"./plugin-vueexport-helper-1542df20.js";import{b as r}from"./Button-a81ecdea.js";import{e as i}from"./router-6446057b.js";const m=t=>{const{textColorDisabled:o}=t;return{iconColorDisabled:o}},s=e({name:"InputNumber",common:n,peers:{Button:r,Input:i},self:m}),c=s;export{c as i};
