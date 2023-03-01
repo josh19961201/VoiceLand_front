@@ -1,0 +1,1 @@
+import{b6 as s,ad as t,ae as a,af as c,b8 as o}from"./plugin-vueexport-helper-1542df20.js";import{c as r}from"./headers-d0c66c5d.js";const n={};function _(f,i){const e=r;return t(),a(e,{class:"pageTitle"},{default:c(()=>[o(" Admin Users ")]),_:1})}const p=s(n,[["render",_]]);export{p as default};
