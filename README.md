@@ -1,35 +1,27 @@
-# VoiceLand_front
+# 土地音造VoiceLand
 
-This template should help get you started developing with Vue 3 in Vite.
+土地音造是一個獨立音樂廠牌的官方網站，主要功能包括作品發佈、演出資訊發佈以及線上商城  
+https://josh19961201.github.io/VoiceLand_front/
 
-## Recommended IDE Setup
+## 使用者介面
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- 支援會員註冊、登入、登出功能
+- 會員資料、密碼修改
+- 歷史訂單查詢
 
-## Customize configuration
+## 管理者介面
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- 首頁Banner、網站介紹修改
+- 演出資訊及作品發佈、修改
+- 商品及訂單管理
 
-## Project Setup
+## 使用技術
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- Vue3
+- Vue Router
+- Pinia
+- Naive UI
+- GSAP
+- Node.js
+- MongoDB
+- RESTful API
