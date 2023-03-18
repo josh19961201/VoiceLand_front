@@ -24,4 +24,5 @@ https://josh19961201.github.io/VoiceLand_front/
 - GSAP
 - Node.js
 - MongoDB
-- RESTful API
+- RESTful API  
+- JWT
